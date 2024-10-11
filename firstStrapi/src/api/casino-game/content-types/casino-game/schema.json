@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "casino_games",
+  "info": {
+    "singularName": "casino-game",
+    "pluralName": "casino-games",
+    "displayName": "casinoGame"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "casinogames": {
+      "type": "json"
+    }
+  }
+}

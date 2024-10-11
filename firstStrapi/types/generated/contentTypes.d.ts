@@ -485,6 +485,33 @@ export interface PluginUsersPermissionsUser
   };
 }
 
+export interface ApiCasinoGameCasinoGame extends Struct.CollectionTypeSchema {
+  collectionName: 'casino_games';
+  info: {
+    singularName: 'casino-game';
+    pluralName: 'casino-games';
+    displayName: 'casinoGame';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    casinogames: Schema.Attribute.JSON;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::casino-game.casino-game'
+    >;
+  };
+}
+
 export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
   collectionName: 'categories';
   info: {
@@ -924,6 +951,7 @@ declare module '@strapi/strapi' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::casino-game.casino-game': ApiCasinoGameCasinoGame;
       'api::category.category': ApiCategoryCategory;
       'api::product.product': ApiProductProduct;
       'admin::permission': AdminPermission;
